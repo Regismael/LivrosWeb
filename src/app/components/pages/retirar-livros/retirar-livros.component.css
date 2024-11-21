@@ -1,0 +1,44 @@
+.btn-danger:hover {
+  background-color: #ff4d4d;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.confirm-box {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.confirm-box button {
+  margin-right: 10px;
+}
+
+.custom-check .form-check-input {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #007bff;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.custom-check .form-check-input:checked {
+  background-color: #007bff;
+  border-color: #0056b3;
+  transform: scale(1.2);
+}
+
+.custom-check .form-check-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  margin-left: 10px;
+}
+
+.custom-check .form-check-input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}

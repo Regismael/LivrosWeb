@@ -1,0 +1,38 @@
+<div class="table-container shadow-lg rounded p-4 mb-5 bg-white">
+  <table class="table table-striped table-hover caption-top">
+    <caption>Lista de Livros</caption>
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Gênero</th>
+        <th scope="col">Ano de Publicação</th>
+        <th scope="col">Situação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of livros | paginate: { itemsPerPage: 5, currentPage: pagina }">
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.autor }}</td>
+        <td>{{ livro.generoNome }}</td>
+        <td>{{ livro.anoDePublicacao }}</td>
+        <td>
+          <span class="badge" [ngClass]="livro.disponibilidade ? 'bg-success' : 'bg-danger'">
+            {{ livro.disponibilidade ? 'Disponível' : 'Indisponível' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-end">
+          <strong>Total de Livros:</strong> {{ livros.length }}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <pagination-controls class="d-flex justify-content-center mt-3" (pageChange)="handlePageChange($event)"
+    previousLabel="Anterior" nextLabel="Próximo">
+  </pagination-controls>
+</div>

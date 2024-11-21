@@ -1,0 +1,75 @@
+<div class="container p-4 my-4 shadow bg-light rounded" style="max-width: 800px;">
+    <div class="text-center mb-4">
+        <img src="https://uploads.turbologo.com/uploads/design/preview_image/1266418/preview_image20201013-13757-w1eik0.png"
+            alt="Logo da Livraria" class="img-fluid"
+            style="max-width: 150px; height: 200px; margin-top: 20px; margin-bottom: 20px;" />
+    </div>
+
+    <h4>Cadastro de livros</h4>
+    <p>Preencha os requisitos abaixo para incluir um livro.</p>
+    <hr />
+
+    <div *ngIf="mensagemSucesso" class="alert alert-success">
+        <strong>Sucesso!</strong> {{ mensagemSucesso }}
+    </div>
+
+    <div *ngIf="mensagemErro" class="alert alert-danger">
+        <strong>Erro!</strong> {{ mensagemErro }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div class="col-12 col-sm-6">
+                <label for="titulo" class="form-label">Título :</label>
+                <input type="text" class="form-control" id="titulo" formControlName="titulo"
+                    placeholder="Digite o título do livro" />
+                <div *ngIf="f['titulo'].invalid && f['titulo'].touched" class="form-text text-danger">
+                    <small *ngIf="f['titulo'].errors?.['required']">Título é obrigatório.</small>
+                    <small *ngIf="f['titulo'].errors?.['minlength']">Título deve ter no mínimo 5 caracteres.</small>
+                    <small *ngIf="f['titulo'].errors?.['maxlength']">Título deve ter no máximo 100 caracteres.</small>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <label for="autor" class="form-label">Autor :</label>
+                <input type="text" class="form-control" id="autor" formControlName="autor"
+                    placeholder="Digite o nome do autor" />
+                <div *ngIf="f['autor'].invalid && f['autor'].touched" class="form-text text-danger">
+                    <small *ngIf="f['autor'].errors?.['required']">Autor é obrigatório.</small>
+                    <small *ngIf="f['autor'].errors?.['minlength']">Autor deve ter no mínimo 5 caracteres.</small>
+                    <small *ngIf="f['autor'].errors?.['maxlength']">Autor deve ter no máximo 100 caracteres.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12 col-sm-6">
+                <label for="genero" class="form-label">Gênero :</label>
+                <select class="form-control" id="genero" formControlName="genero">
+                    <option value="" disabled selected>Selecione o gênero</option>
+                    <option *ngFor="let genero of generos" [value]="genero.value">{{ genero.viewValue }}</option>
+                </select>
+                <div *ngIf="f['genero'].invalid && f['genero'].touched" class="form-text text-danger">
+                    <small>Gênero é obrigatório.</small>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <label for="anoDePublicacao" class="form-label">Ano de Publicação :</label>
+                <select class="form-control" id="anoDePublicacao" formControlName="anoDePublicacao">
+                    <option value="" disabled selected>Selecione o ano</option>
+                    <option *ngFor="let year of getYears()" [value]="year">{{ year }}</option>
+                </select>
+                <div *ngIf="f['anoDePublicacao'].invalid && f['anoDePublicacao'].touched" class="form-text text-danger">
+                    <small *ngIf="f['anoDePublicacao'].errors?.['required']">Ano de publicação é obrigatório.</small>
+                    <small *ngIf="f['anoDePublicacao'].errors?.['min']">O ano deve estar entre 1800 e o ano
+                        atual.</small>
+                    <small *ngIf="f['anoDePublicacao'].errors?.['max']">O ano deve estar entre 1800 e o ano
+                        atual.</small>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Cadastrar Livro</button>
+    </form>
+</div>

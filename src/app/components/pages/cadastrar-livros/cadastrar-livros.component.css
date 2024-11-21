@@ -1,0 +1,39 @@
+.genero-select {
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+
+    appearance: none;
+
+    padding-right: 25px;
+
+}
+
+.genero-select::after {
+    content: "▼";
+
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #999;
+}
+
+.form-label {
+    margin-bottom: 5px;
+  }
+  
+  mat-form-field {
+    margin-bottom: 10px; }
+    .year-only .mat-calendar-period-button,
+    .year-only .mat-calendar-previous-button,
+    .year-only .mat-calendar-next-button,
+    .year-only .mat-calendar-body-cell {
+        display: none;
+    }
+    
+    .year-only .mat-calendar-content {
+        display: block;
+    }
+  

@@ -1,0 +1,50 @@
+<div class="container mt-5 border p-4 rounded shadow-sm">
+    <h4>Devolver Livros</h4>
+    <p>Escolha o livro que deseja devolver.</p>
+
+    <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+        {{ mensagemSucesso }}
+    </div>
+
+    <div *ngIf="showConfirm" class="confirm-box p-4 mb-4 border rounded shadow-sm">
+        <h5>Deseja realmente devolver o livro "{{ selectedBook?.titulo }}"?</h5>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-secondary me-2" (click)="cancelConfirm()">Cancelar</button>
+            <button class="btn btn-success" (click)="confirmDevolver()">Confirmar Devolução</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4"
+            *ngFor="let l of livros | paginate: { itemsPerPage: 6, currentPage: pagina }">
+            <div class="card shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">{{ l.titulo }}</h5>
+                    <p class="card-text"><strong>Autor:</strong> {{ l.autor }}</p>
+                    <p class="card-text"><strong>Gênero:</strong> {{ l.genero }}</p>
+                    <p class="card-text"><strong>Ano de Publicação:</strong> {{ l.anoDePublicacao }}</p>
+                    <p class="card-text">
+                        <strong>Situação:</strong> {{ l.disponibilidade ? 'Disponível' : 'Indisponível' }}
+                    </p>
+
+                    <div *ngIf="!l.disponibilidade" class="d-grid gap-2">
+                        <button class="btn btn-success rounded-pill" (click)="showConfirmBox(l)">
+                            Devolver
+                        </button>
+                    </div>
+                    <div *ngIf="l.disponibilidade" class="text-muted mt-2">
+                        <span>Este livro está disponível para retirada.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-end mt-4">
+        <strong>Total de Livros:</strong> {{ livros.length }}
+    </div>
+
+    <pagination-controls class="d-flex justify-content-center mt-4" (pageChange)="handlePageChange($event)"
+        previousLabel="Anterior" nextLabel="Próximo">
+    </pagination-controls>
+</div>

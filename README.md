@@ -1,27 +1,43 @@
-# LivrosWeb
+# Front-End Angular - Projeto LivrosWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Este projeto é a parte de front-end desenvolvida em Angular para o sistema **LivrosWeb**. Ele se comunica com a API para controle de retirada e devolução de livros e oferece uma interface rica para os usuários interagirem com o sistema.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. **Paginação**
+A aplicação implementa paginação para facilitar a navegação por listas de livros. Isso melhora a experiência do usuário, permitindo visualizar os livros de maneira organizada em várias páginas.
 
-## Code scaffolding
+### 2. **Spinner**
+Durante o carregamento dos dados (como livros e status de retirada/devolução), é exibido um **spinner** para indicar que a aplicação está processando a solicitação, proporcionando uma interface mais amigável e menos frustrante para o usuário.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 3. **Rotas (Routing)**
+A aplicação utiliza o **Angular Router** para navegar entre diferentes páginas, como a listagem de livros, cadastro de retirada e devolução, entre outras. As rotas são bem definidas para uma navegação fluida e intuitiva.
 
-## Build
+### 4. **HttpClient**
+A comunicação com a API `LivrosWeb` é realizada através do **HttpClient** do Angular. Isso permite realizar requisições HTTP para obter, atualizar, remover e adicionar dados relacionados aos livros. A integração com a API é feita de forma eficiente e segura.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 5. **Responsividade**
+A aplicação foi desenvolvida com **responsividade** em mente, utilizando **CSS Flexbox** e **Grid**, além de media queries para garantir que a interface seja otimizada tanto para desktop quanto para dispositivos móveis.
 
-## Running unit tests
+### 6. **Integração com a API LivrosWeb**
+O front-end está completamente integrado com a **API LivrosWeb** (desenvolvida em C# e .NET 8) para controlar a retirada e devolução de livros. Através de chamadas HTTP, a aplicação permite realizar ações como:
+   - Listar livros disponíveis
+   - Retirar livros (alterando seu status)
+   - Devolver livros (alterando seu status)
+   - Visualizar detalhes dos livros
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tecnologias Utilizadas
 
-## Running end-to-end tests
+- **Angular** (Versão mais recente)
+- **HttpClient** para comunicação com a API
+- **Angular Router** para gerenciamento de rotas
+- **CSS (Flexbox e Grid)** para responsividade
+- **Spinner** para melhorar a experiência do usuário durante carregamentos
+- **Bootstrap** para design responsivo e componentes prontos, como botões, modais e formulários, facilitando a construção da interface
+- **Bootstrap Icons** (se utilizado) para ícones prontos e facilmente integráveis
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Como Rodar o Projeto
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/livrosweb-frontend.git
